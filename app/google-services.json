@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1019032452731",
+    "project_id": "scopeafterug1"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1019032452731:android:cca0eb4d947e6090",
+        "android_client_info": {
+          "package_name": "com.webandrioz.scopeafterug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1019032452731-hvt005j4388sqc9kf120o4qcrcs8sp1m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.webandrioz.scopeafterug",
+            "certificate_hash": "e3377a525116d2b8dbd8af46945e6ec32e3828d7"
+          }
+        },
+        {
+          "client_id": "1019032452731-ml5fukqu22j5uhitgkhnh3iinpfi4bt9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2WSWvIyIOw5zPI6KB9DIVaqonTbVMm00"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
