@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.ButtonBarLayout;
 import android.support.v7.widget.Toolbar;
+import android.transition.Slide;
+import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,7 +49,15 @@ public class SignInActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Transition...
+        Slide slide = (Slide) TransitionInflater.from(this).inflateTransition(R.transition.activity_slide);
+        getWindow().setExitTransition(slide);
         setContentView(R.layout.activity_sign_in);
+
+
+        getSupportActionBar().hide();
+
+
         final EditText email= (EditText) findViewById(R.id.email);
         final EditText password= (EditText) findViewById(R.id.password);
         TextView forgotPassword= (TextView) findViewById(R.id.forgotPassword);
@@ -94,6 +104,7 @@ public class SignInActivity extends AppCompatActivity implements
             public void onClick(View v) {
                 Intent in=new Intent(SignInActivity.this,SignUpActivity.class);
                 startActivity(in);
+
             }
         });
         Button login= (Button) findViewById(R.id.signInButton);
@@ -104,7 +115,7 @@ public class SignInActivity extends AppCompatActivity implements
                     Toast.makeText(SignInActivity.this, "All Field Is Mandatory.", Toast.LENGTH_SHORT).show();
                     
                 }else{
-                signIncall("ASA",email.getText().toString(),password.getText().toString(),Constants.CUSTOM_SIGNUP);
+                signInCall("ASA",email.getText().toString(),password.getText().toString(),Constants.CUSTOM_SIGNUP);
 
 
                 }
@@ -113,7 +124,7 @@ public class SignInActivity extends AppCompatActivity implements
         
         
     }
-    public void signIncall(final String name, final String email, final String password, final String type){
+    public void signInCall(final String name, final String email, final String password, final String type){
         String REGISTER_URL= Constants.BASE_URL+ Constants.CUSTOM_SIGNUP_URL;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
                 new Response.Listener<String>() {
@@ -210,7 +221,7 @@ public class SignInActivity extends AppCompatActivity implements
         LayoutInflater li = LayoutInflater.from(SignInActivity.this);
         View promptsView = li.inflate(R.layout.forget_password_layout, null);
 
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(SignInActivity.this);
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(SignInActivity.this,R.style.PauseDialog);
         alertDialogBuilder.setView(promptsView);
         final EditText userInput = (EditText) promptsView.findViewById(R.id.forgotEmail);
         alertDialogBuilder
@@ -263,7 +274,7 @@ public class SignInActivity extends AppCompatActivity implements
             GoogleSignInAccount acct = result.getSignInAccount();
             Toast.makeText(this, acct.getDisplayName()+acct.getEmail(), Toast.LENGTH_SHORT).show();
             Log.e(TAG, "handleSignInResult: "+acct.getDisplayName()+acct.getEmail());
-            signIncall(acct.getDisplayName(),acct.getEmail(),"",Constants.GOOGLE_SIGNUP);
+            signInCall(acct.getDisplayName(),acct.getEmail(),"",Constants.GOOGLE_SIGNUP);
         } else {
             // Signed out, show unauthenticated UI.
 //            updateUI(false);

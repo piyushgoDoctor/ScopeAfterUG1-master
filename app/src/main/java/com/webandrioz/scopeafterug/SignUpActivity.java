@@ -3,6 +3,8 @@ package com.webandrioz.scopeafterug;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Fade;
+import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,7 +32,10 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setupWindowAnimations();
+
         setContentView(R.layout.activity_sign_up);
+
         final EditText name= (EditText) findViewById(R.id.name);
         final EditText email= (EditText) findViewById(R.id.email);
         final EditText password= (EditText) findViewById(R.id.password);
@@ -51,6 +56,12 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
     }
+    private void setupWindowAnimations() {
+        Fade fade = (Fade) TransitionInflater.from(this).inflateTransition(R.transition.activity_fade);
+        getWindow().setEnterTransition(fade);
+
+    }
+
 
     public void signUpcall(final String name, final String email, final String password){
         String REGISTER_URL= Constants.BASE_URL+ Constants.CUSTOM_SIGNUP_URL;

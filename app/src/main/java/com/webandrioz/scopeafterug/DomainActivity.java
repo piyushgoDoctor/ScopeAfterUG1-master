@@ -32,6 +32,8 @@ public class DomainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_domain);
+//      overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left);
+
         gridView= (GridView) findViewById(R.id.domainGridView);
         getDomain();
 
