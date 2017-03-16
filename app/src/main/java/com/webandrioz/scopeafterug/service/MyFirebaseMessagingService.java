@@ -1,4 +1,4 @@
-package com.webandrioz.scopeafterug;
+package com.webandrioz.scopeafterug.service;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -11,6 +11,8 @@ import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.webandrioz.scopeafterug.BooksActivity;
+import com.webandrioz.scopeafterug.R;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 

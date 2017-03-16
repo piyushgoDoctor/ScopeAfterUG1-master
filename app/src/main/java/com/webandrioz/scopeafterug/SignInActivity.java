@@ -31,6 +31,7 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.firebase.crash.FirebaseCrash;
 import com.webandrioz.scopeafterug.constants.Constants;
 
 import org.json.JSONException;
@@ -53,6 +54,7 @@ public class SignInActivity extends AppCompatActivity implements
         Slide slide = (Slide) TransitionInflater.from(this).inflateTransition(R.transition.activity_slide);
         getWindow().setExitTransition(slide);
         setContentView(R.layout.activity_sign_in);
+//        FirebaseCrash.report(new Exception("My first Android non-fatal error"));
 
 
         getSupportActionBar().hide();
