@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.webandrioz.scopeafterug.PaperActivity">
+    tools:context="com.webandrioz.scopeafterug.activities.PaperActivity">
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

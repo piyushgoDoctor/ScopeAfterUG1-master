@@ -1,4 +1,4 @@
-package com.webandrioz.scopeafterug;
+package com.webandrioz.scopeafterug.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,10 +17,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.webandrioz.scopeafterug.adapters.BookListViewAdapter;
+import com.webandrioz.scopeafterug.R;
 import com.webandrioz.scopeafterug.adapters.CoachingListAdapter;
 import com.webandrioz.scopeafterug.constants.Constants;
-import com.webandrioz.scopeafterug.models.Book;
 import com.webandrioz.scopeafterug.models.Coachings;
 
 import org.json.JSONArray;

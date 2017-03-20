@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="2dp"
-    tools:context="com.webandrioz.scopeafterug.CoachingsActivity">
+    tools:context="com.webandrioz.scopeafterug.activities.CoachingsActivity">
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -9,11 +9,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.webandrioz.scopeafterug.BranchesActivity;
-import com.webandrioz.scopeafterug.DomainActivity;
-import com.webandrioz.scopeafterug.ExamsActivity;
+import com.webandrioz.scopeafterug.activities.DomainActivity;
+import com.webandrioz.scopeafterug.activities.ExamsActivity;
 import com.webandrioz.scopeafterug.R;
-import com.webandrioz.scopeafterug.models.Branch;
 import com.webandrioz.scopeafterug.models.Domains;
 
 import java.util.ArrayList;

@@ -7,7 +7,7 @@
     android:background="@drawable/login_background"
     android:padding="16dp"
     android:layout_height="match_parent"
-    tools:context="com.webandrioz.scopeafterug.SignInActivity">
+    tools:context="com.webandrioz.scopeafterug.activities.SignInActivity">
 
     <EditText
         android:id="@+id/email"

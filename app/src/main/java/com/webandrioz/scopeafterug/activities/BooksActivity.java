@@ -1,8 +1,7 @@
-package com.webandrioz.scopeafterug;
+package com.webandrioz.scopeafterug.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ListViewCompat;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ListView;
@@ -14,11 +13,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.webandrioz.scopeafterug.R;
 import com.webandrioz.scopeafterug.adapters.BookListViewAdapter;
-import com.webandrioz.scopeafterug.adapters.BranchGridAdapter;
 import com.webandrioz.scopeafterug.constants.Constants;
 import com.webandrioz.scopeafterug.models.Book;
-import com.webandrioz.scopeafterug.models.Branch;
 
 import org.json.JSONArray;
 import org.json.JSONException;

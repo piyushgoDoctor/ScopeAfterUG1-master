@@ -11,22 +11,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SignInActivity">
+        <activity android:name=".activities.SignInActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".DomainActivity" />
-        <activity android:name=".ExamsActivity" />
-        <activity android:name=".BranchesActivity" />
-        <activity android:name=".MenuActivity" />
-        <activity android:name=".BooksActivity" />
-        <activity android:name=".CoachingsActivity" />
-        <activity android:name=".PaperActivity" />
-        <activity android:name=".QUIZActivity"></activity>
+        <activity android:name=".activities.SignUpActivity" />
+        <activity android:name=".activities.DomainActivity" />
+        <activity android:name=".activities.ExamsActivity" />
+        <activity android:name=".activities.BranchesActivity" />
+        <activity android:name=".activities.MenuActivity" />
+        <activity android:name=".activities.BooksActivity" />
+        <activity android:name=".activities.CoachingsActivity" />
+        <activity android:name=".activities.PaperActivity" />
+        <activity android:name=".activities.QUIZActivity"></activity>
         <service
             android:name=".service.MyFirebaseMessagingService">
             <intent-filter>

@@ -12,11 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.webandrioz.scopeafterug.BooksActivity;
-import com.webandrioz.scopeafterug.BranchesActivity;
-import com.webandrioz.scopeafterug.CoachingsActivity;
+import com.webandrioz.scopeafterug.activities.CoachingsActivity;
 import com.webandrioz.scopeafterug.R;
-import com.webandrioz.scopeafterug.models.Book;
 import com.webandrioz.scopeafterug.models.Coachings;
 
 import java.util.ArrayList;

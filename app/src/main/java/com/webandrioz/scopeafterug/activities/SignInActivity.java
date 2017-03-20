@@ -1,4 +1,4 @@
-package com.webandrioz.scopeafterug;
+package com.webandrioz.scopeafterug.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -6,8 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ButtonBarLayout;
-import android.support.v7.widget.Toolbar;
 import android.transition.Slide;
 import android.transition.TransitionInflater;
 import android.util.Log;
@@ -31,8 +29,9 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.firebase.crash.FirebaseCrash;
+import com.webandrioz.scopeafterug.R;
 import com.webandrioz.scopeafterug.constants.Constants;
+import com.webandrioz.scopeafterug.utils.SharedPreferenceProvider;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -40,7 +39,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SignInActivity extends AppCompatActivity implements
+public class    SignInActivity extends AppCompatActivity implements
         GoogleApiClient.OnConnectionFailedListener{
 
     private  final String TAG = getClass().getName();
@@ -136,6 +135,8 @@ public class SignInActivity extends AppCompatActivity implements
                         try {
                             JSONObject jsonObject=new JSONObject(response);
                             if(jsonObject.getString("success").equals("1")){
+                                new SharedPreferenceProvider().storeData(SignInActivity.this,"LOGIN","1");
+
                                 Toast.makeText(SignInActivity.this,jsonObject.getString("message"),Toast.LENGTH_LONG).show();
                                 Intent in=new Intent(SignInActivity.this,DomainActivity.class);
                                 startActivity(in);

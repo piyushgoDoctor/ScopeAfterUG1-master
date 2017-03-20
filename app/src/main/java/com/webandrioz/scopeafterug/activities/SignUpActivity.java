@@ -1,4 +1,4 @@
-package com.webandrioz.scopeafterug;
+package com.webandrioz.scopeafterug.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,6 +18,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.webandrioz.scopeafterug.R;
 import com.webandrioz.scopeafterug.constants.Constants;
 
 import org.json.JSONException;

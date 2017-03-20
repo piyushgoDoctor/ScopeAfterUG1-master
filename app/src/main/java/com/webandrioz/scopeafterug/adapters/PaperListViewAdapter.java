@@ -10,11 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.webandrioz.scopeafterug.BooksActivity;
-import com.webandrioz.scopeafterug.PaperActivity;
+import com.webandrioz.scopeafterug.activities.PaperActivity;
 import com.webandrioz.scopeafterug.R;
 import com.webandrioz.scopeafterug.constants.Constants;
-import com.webandrioz.scopeafterug.models.Book;
 import com.webandrioz.scopeafterug.models.Paper;
 
 import java.util.ArrayList;

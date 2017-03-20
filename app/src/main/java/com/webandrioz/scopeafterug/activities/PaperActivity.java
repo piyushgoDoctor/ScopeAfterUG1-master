@@ -1,4 +1,4 @@
-package com.webandrioz.scopeafterug;
+package com.webandrioz.scopeafterug.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,11 +13,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.webandrioz.scopeafterug.R;
 import com.webandrioz.scopeafterug.adapters.PaperListViewAdapter;
-import com.webandrioz.scopeafterug.adapters.QuizAdapter;
 import com.webandrioz.scopeafterug.constants.Constants;
 import com.webandrioz.scopeafterug.models.Paper;
-import com.webandrioz.scopeafterug.models.Quiz;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,20 +26,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class QUIZActivity extends AppCompatActivity {
+public class PaperActivity extends AppCompatActivity {
+
     private  final String TAG = getClass().getName();
     ListView listView;
-    ArrayList<Quiz> quizs=new ArrayList<>();
+    ArrayList<Paper> papers=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quiz);
+        setContentView(R.layout.activity_paper);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        listView= (ListView) findViewById(R.id.quizListView);
-        getSupportActionBar().setTitle("Quiz");
-        getQuiz(getIntent().getStringExtra("id"));
+        listView= (ListView) findViewById(R.id.paperListView);
+        getSupportActionBar().setTitle("Papers");
+
+        getPapers(getIntent().getStringExtra("id"));
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -51,8 +52,8 @@ public class QUIZActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    public void getQuiz(final String id){
-        String REGISTER_URL= Constants.BASE_URL+ Constants.QUIZ_URL;
+    public void getPapers(final String id){
+        String REGISTER_URL= Constants.BASE_URL+ Constants.PAPER_URL;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -61,13 +62,13 @@ public class QUIZActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject=new JSONObject(response);
                             if(jsonObject.getString("success").equals("1")){
-                                JSONArray jsonArray=jsonObject.getJSONArray("quiz");
+                                JSONArray jsonArray=jsonObject.getJSONArray("papers");
                                 for(int i=0;i<jsonArray.length();i++){
                                     JSONObject jsonObject1=jsonArray.getJSONObject(i);
-                                    quizs.add(new Quiz(jsonObject1.getString("question_id"),jsonObject1.getString("question"),jsonObject1.getString("option_a"),jsonObject1.getString("option_b"),jsonObject1.getString("option_c"),jsonObject1.getString("option_d"),jsonObject1.getString("answer"),jsonObject1.getString("author") ));
+                                    papers.add(new Paper(jsonObject1.getString("paper_id"),jsonObject1.getString("paper_name")));
                                 }
 
-                                listView.setAdapter(new QuizAdapter(QUIZActivity.this,quizs));
+                                listView.setAdapter(new PaperListViewAdapter(PaperActivity.this,papers));
                             }else{
                             }
                         } catch (JSONException e) {
@@ -80,7 +81,7 @@ public class QUIZActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(QUIZActivity.this,error.toString(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(PaperActivity.this,error.toString(),Toast.LENGTH_LONG).show();
                         Log.e(TAG, "onErrorResponse: "+error.toString());
                     }
                 }){
@@ -101,4 +102,3 @@ public class QUIZActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 }
-

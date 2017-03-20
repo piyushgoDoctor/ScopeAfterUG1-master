@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.webandrioz.scopeafterug.BranchesActivity;
-import com.webandrioz.scopeafterug.ExamsActivity;
+import com.webandrioz.scopeafterug.activities.BranchesActivity;
+import com.webandrioz.scopeafterug.activities.ExamsActivity;
 import com.webandrioz.scopeafterug.R;
 import com.webandrioz.scopeafterug.models.Exams;
 

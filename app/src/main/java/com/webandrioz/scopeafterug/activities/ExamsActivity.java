@@ -1,4 +1,4 @@
-package com.webandrioz.scopeafterug;
+package com.webandrioz.scopeafterug.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,11 +13,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.webandrioz.scopeafterug.adapters.BookListViewAdapter;
-import com.webandrioz.scopeafterug.adapters.PaperListViewAdapter;
+import com.webandrioz.scopeafterug.R;
+import com.webandrioz.scopeafterug.adapters.ExamListViewAdapter;
 import com.webandrioz.scopeafterug.constants.Constants;
-import com.webandrioz.scopeafterug.models.Book;
-import com.webandrioz.scopeafterug.models.Paper;
+import com.webandrioz.scopeafterug.models.Exams;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,22 +26,25 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PaperActivity extends AppCompatActivity {
-
-    private  final String TAG = getClass().getName();
+public class ExamsActivity extends AppCompatActivity {
+    private  final String TAG =getClass().getName() ;
     ListView listView;
-    ArrayList<Paper> papers=new ArrayList<>();
+    String id;
+    ArrayList<Exams> exams=new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_paper);
+        setContentView(R.layout.activity_exams);
+        listView= (ListView) findViewById(R.id.examListView);
+        id=getIntent().getStringExtra("id");
+        getExmas(id);
+        getSupportActionBar().setTitle("Exams");
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        listView= (ListView) findViewById(R.id.paperListView);
-        getSupportActionBar().setTitle("Papers");
 
-        getPapers(getIntent().getStringExtra("id"));
+
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -53,8 +55,9 @@ public class PaperActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-    public void getPapers(final String id){
-        String REGISTER_URL= Constants.BASE_URL+ Constants.PAPER_URL;
+
+    public void getExmas(final String id){
+        String REGISTER_URL= Constants.BASE_URL+ Constants.EXAMS_URL;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -62,19 +65,24 @@ public class PaperActivity extends AppCompatActivity {
                         Log.e(TAG, "onResponse: "+response );
                         try {
                             JSONObject jsonObject=new JSONObject(response);
-                            if(jsonObject.getString("success").equals("1")){
-                                JSONArray jsonArray=jsonObject.getJSONArray("papers");
-                                for(int i=0;i<jsonArray.length();i++){
-                                    JSONObject jsonObject1=jsonArray.getJSONObject(i);
-                                    papers.add(new Paper(jsonObject1.getString("paper_id"),jsonObject1.getString("paper_name")));
-                                }
+//                            if(jsonObject.getString("success").endsWith("1")){
+//
+//                            JSONObject jsonObject1=jsonObject.getJSONObject("exams");
+                            JSONArray jsonArray=jsonObject.getJSONArray("exams");
+                            for (int i = 0; i <jsonArray.length() ; i++) {
+                                JSONObject jsonObject1=jsonArray.getJSONObject(i);
+                                exams.add(new Exams(jsonObject1.getString("exam_id"),jsonObject1.getString("exam_name"),jsonObject1.getString("about")));
 
-                                listView.setAdapter(new PaperListViewAdapter(PaperActivity.this,papers));
-                            }else{
                             }
+                            listView.setAdapter(new ExamListViewAdapter(ExamsActivity.this,exams));
+//
+//                            }else{
+//                                Toast.makeText(ExamsActivity.this,jsonObject.getString("message"),Toast.LENGTH_LONG).show();
+//                            }
+
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Log.e(TAG, "onResponse: "+e.toString() );
+                            Log.e(TAG, e.toString() );
                         }
 
                     }
@@ -82,7 +90,7 @@ public class PaperActivity extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(PaperActivity.this,error.toString(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(ExamsActivity.this,error.toString(),Toast.LENGTH_LONG).show();
                         Log.e(TAG, "onErrorResponse: "+error.toString());
                     }
                 }){
@@ -91,8 +99,8 @@ public class PaperActivity extends AppCompatActivity {
             @Override
             protected Map<String,String> getParams(){
                 Map<String,String> params = new HashMap<>();
-//                /params.put("name",name);
                 params.put("id",id);
+//                params.put("password",password);
 //                params.put("email", email);
                 return params;
             }
