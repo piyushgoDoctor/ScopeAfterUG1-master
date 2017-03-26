@@ -39,7 +39,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class    SignInActivity extends AppCompatActivity implements
+public class    SignInActivity extends BaseActivity implements
         GoogleApiClient.OnConnectionFailedListener{
 
     private  final String TAG = getClass().getName();
@@ -127,6 +127,7 @@ public class    SignInActivity extends AppCompatActivity implements
     }
     public void signInCall(final String name, final String email, final String password, final String type){
         String REGISTER_URL= Constants.BASE_URL+ Constants.CUSTOM_SIGNUP_URL;
+        dialog.show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -136,7 +137,11 @@ public class    SignInActivity extends AppCompatActivity implements
                             JSONObject jsonObject=new JSONObject(response);
                             if(jsonObject.getString("success").equals("1")){
                                 new SharedPreferenceProvider().storeData(SignInActivity.this,"LOGIN","1");
+                                new SharedPreferenceProvider().storeData(SignInActivity.this,"USER_EMIAL",email);
 
+                                new SharedPreferenceProvider().storeData(SignInActivity.this,"USER_NAME",name);
+
+                                dialog.dismiss();
                                 Toast.makeText(SignInActivity.this,jsonObject.getString("message"),Toast.LENGTH_LONG).show();
                                 Intent in=new Intent(SignInActivity.this,DomainActivity.class);
                                 startActivity(in);

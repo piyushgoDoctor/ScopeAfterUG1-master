@@ -11,46 +11,80 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.SignInActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity
+            android:name=".activities.SignInActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.SignUpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.DomainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.ExamsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.BranchesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.MenuActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.BooksActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.CoachingsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.PaperActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.QUIZActivity"
+            android:screenOrientation="portrait" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".activities.SignUpActivity" />
-        <activity android:name=".activities.DomainActivity" />
-        <activity android:name=".activities.ExamsActivity" />
-        <activity android:name=".activities.BranchesActivity" />
-        <activity android:name=".activities.MenuActivity" />
-        <activity android:name=".activities.BooksActivity" />
-        <activity android:name=".activities.CoachingsActivity" />
-        <activity android:name=".activities.PaperActivity" />
-        <activity android:name=".activities.QUIZActivity"></activity>
-        <service
-            android:name=".service.MyFirebaseMessagingService">
+        <service android:name=".service.MyFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-        <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
-             See README(https://goo.gl/l4GJaQ) for more. -->
+        <!--
+             Set custom default icon. This is used when no icon is set for incoming notification messages.
+             See README(https://goo.gl/l4GJaQ) for more.
+        -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@mipmap/ic_launcher" />
-        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
-             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <!--
+             Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
-        <service
-            android:name=".service.MyFirebaseInstanceIDService">
+
+        <service android:name=".service.MyFirebaseInstanceIDService">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
 
+        <activity
+            android:name=".activities.SplashActivity"
+            android:screenOrientation="portrait">
 
+        </activity>
+        <activity
+            android:name=".activities.BaseActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.chat.ChatRoom"
+            android:screenOrientation="portrait" />
+        <activity android:name=".activities.chat.ChatActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -1,7 +1,9 @@
 {
   "project_info": {
     "project_number": "1019032452731",
-    "project_id": "scopeafterug1"
+    "firebase_url": "https://scopeafterug1.firebaseio.com",
+    "project_id": "scopeafterug1",
+    "storage_bucket": "scopeafterug1.appspot.com"
   },
   "client": [
     {
@@ -12,6 +14,18 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "1019032452731-tco6qplqr1s2dpnr81h3f85jv82g1atv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.webandrioz.scopeafterug",
+            "certificate_hash": "6538d3a28db1e8172285ccda7caa7b654bd674d0"
+          }
+        },
+        {
+          "client_id": "1019032452731-eop7lq91jfi9spq5gsmdmn828jsdl1jg.apps.googleusercontent.com",
+          "client_type": 3
+        },
         {
           "client_id": "1019032452731-hvt005j4388sqc9kf120o4qcrcs8sp1m.apps.googleusercontent.com",
           "client_type": 1,
@@ -35,11 +49,16 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1019032452731-eop7lq91jfi9spq5gsmdmn828jsdl1jg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
-          "status": 1
+          "status": 2
         }
       }
     }

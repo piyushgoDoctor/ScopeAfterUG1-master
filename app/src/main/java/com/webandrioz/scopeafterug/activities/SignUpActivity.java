@@ -20,6 +20,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.webandrioz.scopeafterug.R;
 import com.webandrioz.scopeafterug.constants.Constants;
+import com.webandrioz.scopeafterug.utils.SharedPreferenceProvider;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -27,7 +28,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SignUpActivity extends AppCompatActivity {
+public class SignUpActivity extends BaseActivity {
     public final String TAG = getClass().getName();
 
     @Override
@@ -66,6 +67,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     public void signUpcall(final String name, final String email, final String password){
         String REGISTER_URL= Constants.BASE_URL+ Constants.CUSTOM_SIGNUP_URL;
+        dialog.show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -74,6 +76,10 @@ public class SignUpActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject=new JSONObject(response);
                             if(jsonObject.getString("success").equals("1")){
+                                new SharedPreferenceProvider().storeData(SignUpActivity.this,"USER_NAME",name);
+                                new SharedPreferenceProvider().storeData(SignUpActivity.this,"LOGIN","1");
+                                new SharedPreferenceProvider().storeData(SignUpActivity.this,"USER_EMIAL",email);
+                                dialog.dismiss();
                                 Toast.makeText(SignUpActivity.this,jsonObject.getString("message"),Toast.LENGTH_LONG).show();
                                 Intent in=new Intent(SignUpActivity.this,DomainActivity.class);
                                 startActivity(in);

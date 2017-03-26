@@ -17,4 +17,10 @@
         <item name="android:windowEnterAnimation">@android:anim/slide_in_left</item>
         <item name="android:windowExitAnimation">@android:anim/slide_out_right</item>
     </style>
+    <style name="Custom" parent="android:Theme.DeviceDefault.Dialog">
+        <item name="DialogTitleAppearance">@android:style/TextAppearance.Medium</item>
+        <item name="DialogTitleText">Updating…</item>
+        <item name="DialogSpotColor">@color/colorPrimary</item>
+        <item name="DialogSpotCount">6</item>
+    </style>
 </resources>

@@ -5,12 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="2dp"
+    android:background="@drawable/login_background"
     tools:context="com.webandrioz.scopeafterug.activities.BooksActivity">
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/bookListView"
+        android:divider="#ffffff"
+        android:dividerHeight="1dp"
         >
 
     </ListView>

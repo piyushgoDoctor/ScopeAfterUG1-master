@@ -51,7 +51,10 @@ public class ExamListViewAdapter extends ArrayAdapter<String> {
         LayoutInflater li= (LayoutInflater) con.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView =li.inflate(R.layout.exam_listview_layout,null);
         TextView name= (TextView) convertView.findViewById(R.id.examsTextView);
-        name.setText(exams.get(position).getExamsName()+"\n\n"+exams.get(position).getAbout());
+        TextView about= (TextView) convertView.findViewById(R.id.aboutTextView);
+
+        name.setText(exams.get(position).getExamsName());
+        about.setText(exams.get(position).getAbout());
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

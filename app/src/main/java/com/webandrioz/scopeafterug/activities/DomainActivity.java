@@ -16,6 +16,7 @@ import com.webandrioz.scopeafterug.R;
 import com.webandrioz.scopeafterug.adapters.DomainGridAdapter;
 import com.webandrioz.scopeafterug.constants.Constants;
 import com.webandrioz.scopeafterug.models.Domains;
+import com.webandrioz.scopeafterug.utils.SharedPreferenceProvider;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DomainActivity extends AppCompatActivity {
+public class DomainActivity extends BaseActivity {
     private  final String TAG = getClass().getName();
     GridView gridView;
     ArrayList<Domains> domain=new ArrayList<>();
@@ -41,6 +42,7 @@ public class DomainActivity extends AppCompatActivity {
     }
 
     public void getDomain(){
+        dialog.show();
         String REGISTER_URL= Constants.BASE_URL+ Constants.DOMAIN_URL;
         StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
                 new Response.Listener<String>() {
@@ -50,6 +52,7 @@ public class DomainActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject=new JSONObject(response);
                             if(jsonObject.getString("success").equals("1")){
+                                 dialog.dismiss();
                                 JSONArray jsonArray=jsonObject.getJSONArray("domain");
                                 for(int i=0;i<jsonArray.length();i++){
                                     JSONObject jsonObject1=jsonArray.getJSONObject(i);

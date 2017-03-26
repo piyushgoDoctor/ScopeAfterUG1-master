@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class BranchesActivity extends AppCompatActivity {
+public class BranchesActivity extends BaseActivity {
     private  final String TAG = getClass().getName();
     ArrayList<Branch> branches=new ArrayList<>();
     GridView gridView;
@@ -54,6 +54,7 @@ public class BranchesActivity extends AppCompatActivity {
     }
     public void getBranches(final String id){
         String REGISTER_URL= Constants.BASE_URL+ Constants.BRANCHES_URL;
+        dialog.show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -62,6 +63,7 @@ public class BranchesActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject=new JSONObject(response);
                             if(jsonObject.getString("success").equals("1")){
+                                dialog.dismiss();
                                 JSONArray jsonArray=jsonObject.getJSONArray("branches");
                                 for(int i=0;i<jsonArray.length();i++){
                                     JSONObject jsonObject1=jsonArray.getJSONObject(i);

@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class QUIZActivity extends AppCompatActivity {
+public class QUIZActivity extends BaseActivity {
     private  final String TAG = getClass().getName();
     ListView listView;
     ArrayList<Quiz> quizs=new ArrayList<>();
@@ -52,6 +52,7 @@ public class QUIZActivity extends AppCompatActivity {
     }
     public void getQuiz(final String id){
         String REGISTER_URL= Constants.BASE_URL+ Constants.QUIZ_URL;
+        dialog.show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
                 new Response.Listener<String>() {
                     @Override
@@ -60,6 +61,7 @@ public class QUIZActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject=new JSONObject(response);
                             if(jsonObject.getString("success").equals("1")){
+                                dialog.dismiss();
                                 JSONArray jsonArray=jsonObject.getJSONArray("quiz");
                                 for(int i=0;i<jsonArray.length();i++){
                                     JSONObject jsonObject1=jsonArray.getJSONObject(i);

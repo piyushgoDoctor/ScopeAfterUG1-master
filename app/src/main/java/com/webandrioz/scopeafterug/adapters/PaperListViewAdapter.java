@@ -57,7 +57,7 @@ public class PaperListViewAdapter extends ArrayAdapter<String> {
         author.setText(books.get(position).getPaperName());
 //        author.setText(books.get(position).getAuthor());
         buyonline.setText("CLICK HERE TO OPEN.");
-        buyonline.setOnClickListener(new View.OnClickListener() {
+        convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Intent.ACTION_VIEW);

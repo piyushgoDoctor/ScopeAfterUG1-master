@@ -26,7 +26,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ExamsActivity extends AppCompatActivity {
+public class ExamsActivity extends BaseActivity {
     private  final String TAG =getClass().getName() ;
     ListView listView;
     String id;
@@ -58,12 +58,14 @@ public class ExamsActivity extends AppCompatActivity {
 
     public void getExmas(final String id){
         String REGISTER_URL= Constants.BASE_URL+ Constants.EXAMS_URL;
+        dialog.show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Log.e(TAG, "onResponse: "+response );
                         try {
+                            dialog.dismiss();
                             JSONObject jsonObject=new JSONObject(response);
 //                            if(jsonObject.getString("success").endsWith("1")){
 //

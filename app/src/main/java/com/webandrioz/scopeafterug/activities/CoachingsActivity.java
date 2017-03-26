@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CoachingsActivity extends AppCompatActivity {
+public class CoachingsActivity extends BaseActivity {
     private  final String TAG = getClass().getName();
     ListView listView;
     Spinner spinner;
@@ -76,7 +76,7 @@ public class CoachingsActivity extends AppCompatActivity {
 
     }
     public void getCities(final String id, String url){
-
+       dialog.show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
                     @Override
@@ -85,6 +85,7 @@ public class CoachingsActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject=new JSONObject(response);
                             if(jsonObject.getString("success").equals("1")){
+                                dialog.dismiss();
                                 JSONArray jsonArray=jsonObject.getJSONArray("coachings");
                                 for(int i=0;i<jsonArray.length();i++){
                                     JSONObject jsonObject1=jsonArray.getJSONObject(i);
@@ -140,6 +141,7 @@ public class CoachingsActivity extends AppCompatActivity {
 
     public void getCoachings(final String id, String url){
         coachingses.clear();
+        dialog.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>() {
@@ -149,6 +151,7 @@ public class CoachingsActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonObject=new JSONObject(response);
                             if(jsonObject.getString("success").equals("1")){
+                                dialog.dismiss();
                                 JSONArray jsonArray=jsonObject.getJSONArray("coachings");
                                 for(int i=0;i<jsonArray.length();i++){
                                     JSONObject jsonObject1=jsonArray.getJSONObject(i);
