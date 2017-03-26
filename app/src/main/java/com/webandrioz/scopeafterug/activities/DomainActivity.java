@@ -1,8 +1,11 @@
 package com.webandrioz.scopeafterug.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -13,6 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.webandrioz.scopeafterug.R;
+import com.webandrioz.scopeafterug.activities.chat.ChatActivity;
 import com.webandrioz.scopeafterug.adapters.DomainGridAdapter;
 import com.webandrioz.scopeafterug.constants.Constants;
 import com.webandrioz.scopeafterug.models.Domains;
@@ -38,6 +42,17 @@ public class DomainActivity extends BaseActivity {
 
         gridView= (GridView) findViewById(R.id.domainGridView);
         getDomain();
+        Button chat= (Button) findViewById(R.id.chat);
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!(new SharedPreferenceProvider().fatchDataLegislators(DomainActivity.this,"LOGIN").equals("0"))) {
+                    startActivity(new Intent(DomainActivity.this, ChatActivity.class));
+                }else {
+                    Toast.makeText(DomainActivity.this, "To Access Chat You Must LOGIN", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 
     }
 
