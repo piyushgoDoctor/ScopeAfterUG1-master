@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.webandrioz.scopeafterug.activities.PaperActivity;
 import com.webandrioz.scopeafterug.R;
+import com.webandrioz.scopeafterug.activities.WebViewActivity;
 import com.webandrioz.scopeafterug.constants.Constants;
 import com.webandrioz.scopeafterug.models.Paper;
 
@@ -60,8 +61,10 @@ public class PaperListViewAdapter extends ArrayAdapter<String> {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setData(Uri.parse("http://docs.google.com/viewer?url="+Constants.BASE_URL+Constants.PAPERS+books.get(position).getPaperId()+".pdf"));
+                Intent i=new Intent(con, WebViewActivity.class);
+                i.putExtra("pdf",Constants.BASE_URL_PDF+Constants.PAPERS+/*books.get(position).getPaperId()*/(position+1)+".pdf");
+//                Intent i = new Intent(Intent.ACTION_VIEW);
+//                i.setData(Uri.parse("http://docs.google.com/viewer?url="+Constants.BASE_URL+Constants.PAPERS+books.get(position).getPaperId()+".pdf"));
                 con.startActivity(i);
             }
         });

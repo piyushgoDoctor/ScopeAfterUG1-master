@@ -8,8 +8,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.webandrioz.scopeafterug.R;
+import com.webandrioz.scopeafterug.constants.Constants;
 
-public class MenuActivity extends AppCompatActivity {
+public class MenuActivity extends BaseActivity {
     String id;
 
     @Override
@@ -24,6 +25,15 @@ public class MenuActivity extends AppCompatActivity {
         Button coachings= (Button) findViewById(R.id.coachings);
         Button papers= (Button) findViewById(R.id.paper);
         Button quiz= (Button) findViewById(R.id.quiz);
+        Button eligibility= (Button) findViewById(R.id.eligibility);
+        eligibility.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(MenuActivity.this, WebViewActivity.class);
+                i.putExtra("pdf", Constants.BASE_URL_PDF+"eligibility/"+id+".pdf");
+               startActivity(i);
+            }
+        });
         books.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

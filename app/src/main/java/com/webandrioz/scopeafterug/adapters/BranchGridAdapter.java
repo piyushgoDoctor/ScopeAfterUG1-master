@@ -9,6 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.webandrioz.scopeafterug.activities.BranchesActivity;
 import com.webandrioz.scopeafterug.activities.MenuActivity;
 import com.webandrioz.scopeafterug.R;
@@ -25,7 +26,6 @@ public class BranchGridAdapter  extends BaseAdapter {
 
     Context con;
     ArrayList<Branch> domain=new ArrayList<>();
-    static int pos;
 
     public BranchGridAdapter(BranchesActivity domainActivity, ArrayList<Branch> domain) {
         con=domainActivity;
@@ -69,13 +69,14 @@ public class BranchGridAdapter  extends BaseAdapter {
         LayoutInflater li= (LayoutInflater) con.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView =li.inflate(R.layout.domian_grid_layout,null);
         BranchGridAdapter.Holder holder=new BranchGridAdapter.Holder();
-        pos=position;
+
 
 //       holder.cd= (CardView) convertView.findViewById(R.id.card_viewHome);
 //       convertView.findViewById(R.id.card_viewHome).setBackgroundColor(Color.parseColor("#ffffff"));
         holder.img= (ImageView) convertView.findViewById(R.id.domainGridViewImage);
         //holder.img.setVisibility(View.INVISIBLE);
         holder.tv= (TextView) convertView.findViewById(R.id.domainGridText);
+        Picasso.with(con).load("http://scopeafterug.xyz/branch/"+(position+1)+".jpg").resize(100, 100).into(holder.img);
 
 //        holder.img.setImageResource(images[position]);
         holder.tv.setText(domain.get(position).getNamen());

@@ -7,10 +7,19 @@
     android:padding="16dp"
     android:background="@drawable/login_background"
     tools:context="com.webandrioz.scopeafterug.activities.SignUpActivity">
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@mipmap/logo"
+        android:id="@+id/splashImage"
+        android:scaleType="fitXY"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/splashImage"
         android:id="@+id/textInputLayout2">
 
     <EditText
@@ -74,7 +83,7 @@
         android:background="@drawable/round_button"
         tools:layout_editor_absoluteX="126dp"
         tools:layout_editor_absoluteY="270dp"
+        android:layout_marginTop="26dp"
         android:layout_below="@+id/textInputLayout4"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp" />
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

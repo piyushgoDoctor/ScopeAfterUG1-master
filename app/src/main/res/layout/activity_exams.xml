@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     android:background="@drawable/login_background"
     tools:context="com.webandrioz.scopeafterug.activities.ExamsActivity">
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/examListView"
-        android:dividerHeight="1dp"
-        android:divider="#ffffff"
+        android:dividerHeight="4dp"
+        android:divider="#00ffffff"
         >
 
 

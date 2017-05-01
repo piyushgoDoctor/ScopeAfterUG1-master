@@ -7,6 +7,8 @@ package com.webandrioz.scopeafterug.constants;
 public class Constants {
 
     public static final String BASE_URL="http://apis.scopeafterug.xyz/";
+    public static final String BASE_URL_PDF="http://scopeafterug.xyz/";
+    public static final String BASE_URL_ELIGIBILITY="http://scopeafterug.xyz/";
     public static final String FB_SIGNUP="FB";
     public static final String GOOGLE_SIGNUP="google";
     public static final String CUSTOM_SIGNUP="custom";

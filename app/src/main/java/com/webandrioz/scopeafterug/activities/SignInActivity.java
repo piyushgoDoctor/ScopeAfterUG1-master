@@ -39,7 +39,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class    SignInActivity extends BaseActivity implements
+public class  SignInActivity extends BaseActivity implements
         GoogleApiClient.OnConnectionFailedListener{
 
     private  final String TAG = getClass().getName();
@@ -126,7 +126,7 @@ public class    SignInActivity extends BaseActivity implements
         
     }
     public void signInCall(final String name, final String email, final String password, final String type){
-        String REGISTER_URL= Constants.BASE_URL+ Constants.CUSTOM_SIGNUP_URL;
+        String REGISTER_URL= Constants.BASE_URL+ Constants.LOGIN_URL;
         dialog.show();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, REGISTER_URL,
                 new Response.Listener<String>() {
@@ -231,6 +231,7 @@ public class    SignInActivity extends BaseActivity implements
 
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(SignInActivity.this,R.style.PauseDialog);
         alertDialogBuilder.setView(promptsView);
+//        alertDialogBuilder.setTitle("Forget Password?");
         final EditText userInput = (EditText) promptsView.findViewById(R.id.forgotEmail);
         alertDialogBuilder
                 .setCancelable(true)

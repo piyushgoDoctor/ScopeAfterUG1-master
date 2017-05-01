@@ -1,6 +1,5 @@
 package com.webandrioz.scopeafterug.activities;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -26,11 +25,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PaperActivity extends BaseActivity {
+import es.voghdev.pdfviewpager.library.RemotePDFViewPager;
+import es.voghdev.pdfviewpager.library.adapter.PDFPagerAdapter;
+import es.voghdev.pdfviewpager.library.remote.DownloadFile;
+
+public class PaperActivity extends BaseActivity  implements DownloadFile.Listener {
 
     private  final String TAG = getClass().getName();
     ListView listView;
     ArrayList<Paper> papers=new ArrayList<>();
+    RemotePDFViewPager remotePDFViewPage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +46,15 @@ public class PaperActivity extends BaseActivity {
         getSupportActionBar().setTitle("Papers");
 
         getPapers(getIntent().getStringExtra("id"));
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+////                Constants.BASE_URL+Constants.PAPERS+books.get(position).getPaperId()+".pdf"4
+//                Log.e(TAG, "onItemClick: "+Constants.BASE_URL+Constants.PAPERS+papers.get(position).getPaperId()+".pdf" );
+//                 remotePDFViewPage =
+//                        new RemotePDFViewPager(PaperActivity.this,  Constants.BASE_URL+Constants.PAPERS+papers.get(position).getPaperId()+".pdf", PaperActivity.this);
+//            }
+//        });
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -75,6 +88,7 @@ public class PaperActivity extends BaseActivity {
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            Toast.makeText(PaperActivity.this, "Some Problem Occur Try Again!!", Toast.LENGTH_SHORT).show();
                             Log.e(TAG, "onResponse: "+e.toString() );
                         }
 
@@ -102,5 +116,23 @@ public class PaperActivity extends BaseActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
+
+    @Override
+    public void onSuccess(String url, String destinationPath) {
+        PDFPagerAdapter adapter = new PDFPagerAdapter(this, "AdobeXMLFormsSamples.pdf");
+        remotePDFViewPage.setAdapter(adapter);
+        setContentView(remotePDFViewPage);
+    }
+
+    @Override
+    public void onFailure(Exception e) {
+        Log.e(TAG, "onFailure: "+e.getMessage() );
+    }
+
+    @Override
+    public void onProgressUpdate(int progress, int total) {
+        Log.e(TAG, "onProgressUpdate: "+progress );
+
     }
 }

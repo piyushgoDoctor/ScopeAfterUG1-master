@@ -16,28 +16,16 @@ public class SharedPreferenceProvider {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(key, data);
         editor.apply();
+    }
 
-
-    }
-    public void deleteKey(Context con,String key){
-        SharedPreferences sharedPreferences = con.getSharedPreferences("Piyush1", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.remove(key);
-        editor.apply();
-    }
-    public void deleteKey(Context con,String key,String str){
-        SharedPreferences sharedPreferences = con.getSharedPreferences("Piyush1", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.remove(key);
-        editor.apply();
-    }
 
 
     public  void deleteData(Context con) {
 
-        SharedPreferences sharedPreferences = con.getSharedPreferences("Piyush", Context.MODE_PRIVATE);
+        SharedPreferences sharedPreferences = con.getSharedPreferences("Piyush1", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
+        editor.apply();
     }
 
     public String fatchDataLegislators(Context con ,String key){

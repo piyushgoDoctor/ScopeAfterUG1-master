@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -33,7 +34,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 
-public class ChatRoom  extends BaseActivity{
+public class ChatRoom  extends AppCompatActivity{
 
     private Button btn_send_msg;
     private EditText input_msg;
@@ -50,6 +51,9 @@ public class ChatRoom  extends BaseActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat_room);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        Toast.makeText(this, "Please Wait For Some Time", Toast.LENGTH_SHORT).show();
 
         btn_send_msg = (Button) findViewById(R.id.btn_send);
         input_msg = (EditText) findViewById(R.id.msg_input);

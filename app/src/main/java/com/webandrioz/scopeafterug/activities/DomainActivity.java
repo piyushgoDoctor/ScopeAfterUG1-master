@@ -1,9 +1,13 @@
 package com.webandrioz.scopeafterug.activities;
 
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
@@ -38,11 +42,18 @@ public class DomainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_domain);
+        try {
+//            getSupportActionBar().hide();
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            getSupportActionBar().setDisplayShowHomeEnabled(false);
+        }catch (NullPointerException e){
+            Log.e(TAG, "onCreate: "+e.getMessage() );
+        }
 //      overridePendingTransition(R.anim.left_to_right, R.anim.right_to_left);
 
         gridView= (GridView) findViewById(R.id.domainGridView);
         getDomain();
-        Button chat= (Button) findViewById(R.id.chat);
+        FloatingActionButton chat= (FloatingActionButton) findViewById(R.id.chat);
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -106,4 +117,31 @@ public class DomainActivity extends BaseActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.domaim_manu, menu);
+//        return true;
+//    }
+//
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.logout:
+//                new SharedPreferenceProvider().deleteData(DomainActivity.this);
+//
+//                return true;
+//            case R.id.feedback:
+//                Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+//                emailIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                emailIntent.setType("vnd.android.cursor.item/email");
+//                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] {"scopeafterug@gmail.com"});
+//                emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Feedback");
+//                startActivity(Intent.createChooser(emailIntent, "Send mail using..."));
+//                return true;
+//            case R.id.rate:
+////                startActivity(new Intent(this, Help.class));
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
 }

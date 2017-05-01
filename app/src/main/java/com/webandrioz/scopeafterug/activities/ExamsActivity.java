@@ -39,8 +39,8 @@ public class ExamsActivity extends BaseActivity {
         listView= (ListView) findViewById(R.id.examListView);
         id=getIntent().getStringExtra("id");
         getExmas(id);
+        Log.e(TAG, "getExmas: "+id );
         getSupportActionBar().setTitle("Exams");
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -92,7 +92,7 @@ public class ExamsActivity extends BaseActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(ExamsActivity.this,error.toString(),Toast.LENGTH_LONG).show();
+                        Toast.makeText(ExamsActivity.this,error.getMessage(),Toast.LENGTH_LONG).show();
                         Log.e(TAG, "onErrorResponse: "+error.toString());
                     }
                 }){

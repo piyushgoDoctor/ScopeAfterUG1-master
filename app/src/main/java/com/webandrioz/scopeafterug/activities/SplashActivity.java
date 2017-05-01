@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -14,7 +15,7 @@ import com.webandrioz.scopeafterug.utils.SharedPreferenceProvider;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private static final long SPLASH_TIME_OUT = 2;
+    private static final long SPLASH_TIME_OUT = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +24,10 @@ public class SplashActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
-//        ImageView imgv = (ImageView) findViewById(R.id.splashImageView);
-//        imgv.setScaleType(ImageView.ScaleType.FIT_XY);
+        getSupportActionBar().hide();
+        ImageView imgv = (ImageView) findViewById(R.id.splashImage);
+        imgv.setScaleType(ImageView.ScaleType.FIT_XY);
+        Log.e("Splash", "onCreate: "+"splash" );
         new Handler().postDelayed(new Runnable() {
 
             /*
@@ -40,13 +43,16 @@ public class SplashActivity extends AppCompatActivity {
                 if(new SharedPreferenceProvider().fatchDataLegislators(SplashActivity.this,"LOGIN").equals("1")) {
                     Intent i = new Intent(SplashActivity.this, DomainActivity.class);
                     startActivity(i);
+                    finish();
+                    Log.e("SplashActivity", "run: "+"mdmd");
                 }else {
                     Intent i = new Intent(SplashActivity.this, SignInActivity.class);
                     startActivity(i);
+                    finish();
+                    Log.e("SplashActivity", "run: "+"mdmdELSE");
                 }
 
-                // close this activity
-                finish();
+
             }
         }, SPLASH_TIME_OUT);
 

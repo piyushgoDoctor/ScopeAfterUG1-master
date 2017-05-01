@@ -28,8 +28,11 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SignUpActivity extends BaseActivity {
+import dmax.dialog.SpotsDialog;
+
+public class SignUpActivity extends AppCompatActivity {
     public final String TAG = getClass().getName();
+    SpotsDialog dialog ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,7 @@ public class SignUpActivity extends BaseActivity {
         setupWindowAnimations();
 
         setContentView(R.layout.activity_sign_up);
+        dialog = new SpotsDialog(SignUpActivity.this);
 
         final EditText name= (EditText) findViewById(R.id.name);
         final EditText email= (EditText) findViewById(R.id.email);

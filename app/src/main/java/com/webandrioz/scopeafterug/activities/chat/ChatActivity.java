@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,7 +30,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-public class ChatActivity extends BaseActivity {
+public class ChatActivity extends AppCompatActivity {
 //    private Button  add_room;
 //    private EditText room_name;
     private ListView listView;
@@ -43,13 +44,14 @@ public class ChatActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         getSupportActionBar().setTitle("Chat Rooms");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        Toast.makeText(this, "Please Wait For Some Time", Toast.LENGTH_SHORT).show();
 
 //        add_room = (Button) findViewById(R.id.btn_add_room);
 //        room_name = (EditText) findViewById(R.id.room_name_edittext);
         listView = (ListView) findViewById(R.id.listView);
-
         arrayAdapter = new ArrayAdapter<>(this,R.layout.chat_listview_layout,list_of_rooms);
-
         listView.setAdapter(arrayAdapter);
 
 //        request_user_name();
