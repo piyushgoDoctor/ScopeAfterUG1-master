@@ -4,15 +4,16 @@
     android:id="@+id/activity_quiz"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="2dp"
     android:background="@drawable/login_background"
     tools:context="com.webandrioz.scopeafterug.activities.QUIZActivity">
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/quizListView"
-        android:divider="#ffffff"
-        android:dividerHeight="1dp">
+        android:padding="8dp"
+
+        android:divider="#00ffffff"
+        android:dividerHeight="4dp">
     </ListView>
 
 </RelativeLayout>

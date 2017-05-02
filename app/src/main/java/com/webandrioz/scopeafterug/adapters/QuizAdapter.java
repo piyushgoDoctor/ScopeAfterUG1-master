@@ -60,7 +60,7 @@ public class QuizAdapter extends ArrayAdapter<String> {
         opB.setText("Option B-\n"+books.get(position).getOpB());
         opC.setText("Option C-\n"+books.get(position).getOpC());
         opD.setText("Option D-\n"+books.get(position).getOpD());
-        ans.setText("Show Ans");
+        ans.setText("Show Answer");
         ans.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

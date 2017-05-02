@@ -138,8 +138,13 @@ public class  SignInActivity extends BaseActivity implements
                             if(jsonObject.getString("success").equals("1")){
                                 new SharedPreferenceProvider().storeData(SignInActivity.this,"LOGIN","1");
                                 new SharedPreferenceProvider().storeData(SignInActivity.this,"USER_EMIAL",email);
+                                        //name from server....
+                                if(jsonObject.has("name")) {
+                                    new SharedPreferenceProvider().storeData(SignInActivity.this, "USER_NAME", jsonObject.getString("name"));
+                                } else {
+                                    new SharedPreferenceProvider().storeData(SignInActivity.this, "USER_NAME", name);
 
-                                new SharedPreferenceProvider().storeData(SignInActivity.this,"USER_NAME",name);
+                                }
 
                                 dialog.dismiss();
                                 Toast.makeText(SignInActivity.this,jsonObject.getString("message"),Toast.LENGTH_LONG).show();

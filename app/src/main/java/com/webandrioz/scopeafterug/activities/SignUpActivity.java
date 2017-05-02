@@ -41,6 +41,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_sign_up);
         dialog = new SpotsDialog(SignUpActivity.this);
+//        dialog.setCancelable(false);
 
         final EditText name= (EditText) findViewById(R.id.name);
         final EditText email= (EditText) findViewById(R.id.email);

@@ -23,6 +23,7 @@
         android:src="@android:drawable/stat_notify_chat"
         android:layout_alignParentBottom="true"
         android:layout_margin="15dp"
+        app:backgroundTint="@color/colorPrimary"
         android:layout_alignParentRight="true"
       />
 

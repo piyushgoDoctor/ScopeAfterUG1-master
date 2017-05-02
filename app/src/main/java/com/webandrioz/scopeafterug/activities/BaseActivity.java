@@ -15,12 +15,13 @@ import com.webandrioz.scopeafterug.utils.SharedPreferenceProvider;
 import dmax.dialog.SpotsDialog;
 
 public class BaseActivity extends AppCompatActivity {
-    SpotsDialog dialog ;
+    SpotsDialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dialog = new SpotsDialog(BaseActivity.this);
+//        dialog.setCancelable(false);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }

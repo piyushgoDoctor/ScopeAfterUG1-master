@@ -13,7 +13,6 @@
         android:id="@+id/splashImage"
         android:layout_width="100dp"
         android:layout_height="100dp"
-
         android:layout_above="@+id/textInputLayout2"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="11dp"

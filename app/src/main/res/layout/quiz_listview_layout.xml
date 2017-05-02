@@ -3,13 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:padding="2dp"
+
     android:background="@drawable/login_background"
     android:layout_height="match_parent">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Question"
+        android:paddingLeft="5dp"
+        android:paddingStart="5dp"
         android:id="@+id/question"
         />
     <View
@@ -19,6 +21,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="opA"
+        android:paddingLeft="5dp"
+        android:paddingStart="5dp"
+
         android:id="@+id/opA"
         />
     <View
@@ -28,6 +33,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="opB"
+        android:paddingLeft="5dp"
+        android:paddingStart="5dp"
         android:id="@+id/opB"
         />
     <View
@@ -37,6 +44,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="opC"
+        android:paddingLeft="5dp"
+        android:paddingStart="5dp"
         android:id="@+id/opC"
         />
     <View
@@ -46,6 +55,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="opD"
+        android:paddingLeft="5dp"
+        android:paddingStart="5dp"
         android:id="@+id/opD"
         />
     <View
@@ -55,6 +66,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ans"
+
+        android:gravity="center"
         android:id="@+id/ans"
         />
     <View
